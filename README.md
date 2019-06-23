@@ -1,1 +1,3 @@
-# railsapp2
+# README
+
+Simple rails app
