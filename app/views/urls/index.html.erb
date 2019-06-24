@@ -2,6 +2,10 @@
 
 <h1>Urls</h1>
 
+<div>
+  <%= link_to 'New Url', new_url_path %>
+</div>
+
 <table>
   <thead>
     <tr>
@@ -12,14 +16,8 @@
   <tbody>
     <% @urls.each do |url| %>
       <tr>
-        <td><%= link_to 'Show', url %></td>
-        <td><%= link_to 'Edit', edit_url_path(url) %></td>
-        <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to url.url, u_url(url.token), target: '_blank' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Url', new_url_path %>

@@ -8,34 +8,20 @@ class UrlsTest < ApplicationSystemTestCase
   test "visiting the index" do
     visit urls_url
     assert_selector "h1", text: "Urls"
+    assert page.has_content?(@url.url)
   end
 
   test "creating a Url" do
     visit urls_url
     click_on "New Url"
+    fill_in 'url_url', with: 'google.com'
 
     click_on "Create Url"
-
-    assert_text "Url was successfully created"
-    click_on "Back"
+    assert_current_path root_path
   end
 
-  test "updating a Url" do
-    visit urls_url
-    click_on "Edit", match: :first
-
-    click_on "Update Url"
-
-    assert_text "Url was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Url" do
-    visit urls_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
-    assert_text "Url was successfully destroyed"
+  test 'redirect from short url' do
+    visit u_url(@url.token)
+    assert current_path, @url.url
   end
 end

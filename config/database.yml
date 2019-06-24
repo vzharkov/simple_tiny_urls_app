@@ -13,6 +13,9 @@ default: &default
 development:
   <<: *default
   database: urls_db_dev
+  username: postgres
+  password: postgres
+  port: 5433
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,6 +23,9 @@ development:
 test:
   <<: *default
   database: urls_db_test
+  username: postgres
+  password: postgres
+  port: 5433
 
 production:
   <<: *default
