@@ -7,18 +7,19 @@ class UrlsController < ApplicationController
 
   def create
     @url = ::Urls::Create.new(permitted_params).call
-    redirect_to root_url if @url
+    if @url
+      flash[:notice] = 'Url created'
+      puts url_url(@url.id)
+      redirect_to url_url(@url.token)
+    end
   end
 
   def index
-    @urls = Url.limit(25)
+    @urls = Url.ordered.limit(25)
   end
 
   def show
-    url = Url.find_by(token: params[:token])
-    redirect_url = url ? url.url : root_url
-
-    redirect_to redirect_url
+    @url = Url.find_by(token: params[:id])
   end
 
   private

@@ -7,7 +7,7 @@ class UrlsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit urls_url
-    assert_selector "h1", text: "Urls"
+    assert_selector "h1", text: "Create short url!"
     assert page.has_content?(@url.url)
   end
 
@@ -16,9 +16,10 @@ class UrlsTest < ApplicationSystemTestCase
     click_on "New Url"
     fill_in 'url_url', with: 'google.com'
 
-    click_on "Create Url"
-    assert_current_path root_path
+    click_on "Create url"
+    assert page.has_content?('Url created')
   end
+
 
   test 'redirect from short url' do
     visit u_url(@url.token)

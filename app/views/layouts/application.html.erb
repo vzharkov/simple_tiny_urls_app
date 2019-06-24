@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Railsapp2</title>
+    <title>Simple short urls</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +9,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class='container'>
+    <% if notice %>
+      <p id="notice" class='alert alert-info'><%= notice %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.text_field :url %>
+  <div class='form-group'>
+    <%= form.text_field :url, class: 'form-control', placeholder: 'Enter link' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Create url', class: 'btn btn-primary btn-md' %>
   </div>
 <% end %>
