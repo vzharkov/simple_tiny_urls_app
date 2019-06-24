@@ -7,10 +7,12 @@ class UrlsController < ApplicationController
 
   def create
     @url = ::Urls::Create.new(permitted_params).call
-    if @url
+    if @url.valid?
       flash[:notice] = 'Url created'
-      puts url_url(@url.id)
       redirect_to url_url(@url.token)
+    else
+      flash[:alert] = @url.errors.messages[:url]
+      render 'new'
     end
   end
 

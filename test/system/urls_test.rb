@@ -14,12 +14,11 @@ class UrlsTest < ApplicationSystemTestCase
   test "creating a Url" do
     visit urls_url
     click_on "New Url"
-    fill_in 'url_url', with: 'google.com'
+    fill_in 'url_url', with: 'http://google.com'
 
     click_on "Create url"
     assert page.has_content?('Url created')
   end
-
 
   test 'redirect from short url' do
     visit u_url(@url.token)
